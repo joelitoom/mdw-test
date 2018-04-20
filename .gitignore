@@ -1,0 +1,11 @@
+build/
+deploy/
+target/
+.metadata/
+data/
+.gradle
+temp
+*.launch
+testResults
+assets/Archive/
+RemoteSystemsTempFiles/

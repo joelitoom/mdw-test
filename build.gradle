@@ -1,0 +1,71 @@
+apply plugin: "eclipse-wtp"
+apply plugin: 'java'
+
+eclipse {
+    project {
+        natures += "org.eclipse.wst.common.project.facet.core.nature"
+    }
+    classpath {
+        defaultOutputDir = file("build/classes")
+        
+        containers "GROOVY_SUPPORT"
+        containers "GROOVY_DSL_SUPPORT"
+        
+        file {
+            whenMerged { classpath ->
+                // eclipse should process dynamic java, but should not be part of build
+                def assetsSrc = new org.gradle.plugins.ide.eclipse.model.SourceFolder("assetLoc", "build/${assetLoc}")
+                assetsSrc.excludes.add("Archive/")
+                entries.add(assetsSrc)
+                
+                def groovySupport = entries.find { it.kind == "con" && it.path == "GROOVY_SUPPORT" }
+                groovySupport.entryAttributes.put("minimal", "true")
+            }
+        }
+    }
+    wtp {
+        facet {
+            facet name: "jst.web", version: "3.0"
+            facet name: "mdw.workflow", version: "5.1"
+            file {
+                whenMerged { facet ->
+                    facet.facets.remove(facet.facets.find { it.name == "jst.utility" })
+                }
+            }
+        }      
+    }
+}
+
+group = "${sourceGroup}"
+version = '1.0.01'
+
+description = "mymdw61"
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+            srcDir assetLoc
+        }
+    }
+}
+
+repositories {
+     maven { url repositoryUrl }
+}
+
+dependencies {
+    compile group: 'com.centurylink.mdw', name: 'mdw-common', version: mdwVersion
+    compile group: 'com.centurylink.mdw', name: 'mdw-services', version: mdwVersion
+    compile group: 'com.centurylink.mdw', name: 'mdw-workflow', version: mdwVersion
+
+    // asset package dependencies
+    compile fileTree(dir: "${assetLoc}/com/centurylink/mdw/node", includes: ["*.jar"])
+    
+    compile group: 'org.springframework', name: 'spring-beans', version: springVersion
+    compile group: 'org.springframework', name: 'spring-context', version: springVersion
+    compile group: 'org.springframework', name: 'spring-core', version: springVersion
+}
