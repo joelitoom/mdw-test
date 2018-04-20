@@ -1,5 +1,8 @@
 {
-  "attributes": {},
+  "attributes": {
+    "TaskSLA_UNITS": "Days",
+    "TaskSLA": "259200"
+  },
   "category": "GEN",
   "logicalId": "step1",
   "name": "step1",
