@@ -40,5 +40,11 @@
     "NodeStyle": "BoxIcon",
     "PROCESS_VISIBILITY": "PUBLIC",
     "WORK_DISPLAY_INFO": "x=50,y=50,w=0,h=0"
-  }
+  },
+  "variables": {"ProductType": {
+    "category": "INPUT",
+    "display": "Optional",
+    "label": "Product Type",
+    "type": "java.lang.String"
+  }}
 }
