@@ -20,8 +20,8 @@
     },
     {
       "attributes": {
-        "TASK_TEMPLATE": "testFlow/step1.task",
-        "TASK_TEMPLATE_assetVersion": "[0.1,1)",
+        "TASK_TEMPLATE": "testFlow/stepOne.task",
+        "TASK_TEMPLATE_assetVersion": "[0.2,1)",
         "WORK_DISPLAY_INFO": "x=256,y=185,w=100,h=60"
       },
       "id": "A3",
