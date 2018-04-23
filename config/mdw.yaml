@@ -23,10 +23,10 @@ database:
 
 # asset location info (use absolute paths when running thru eclipse wtp) 
 asset:
-  location: C:/mdw/mymdw61/assets
+  location: C:/Users/Joel/git/mdw-test/assets
 
 git:
-  local.path: C:/mdw/mymdw61
+  local.path: C:/Users/Joel/git/mdw-test
   remote.url: https://github.com/joelitoom/mdw-test.git
   branch: master
 

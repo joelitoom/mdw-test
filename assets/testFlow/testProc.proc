@@ -1,0 +1,44 @@
+{
+  "activities": [
+    {
+      "attributes": {"WORK_DISPLAY_INFO": "x=60,y=260,w=60,h=40"},
+      "id": "A1",
+      "implementor": "com.centurylink.mdw.workflow.activity.process.ProcessStartActivity",
+      "name": "Start",
+      "transitions": [{
+        "attributes": {"TRANSITION_DISPLAY_INFO": "type=Elbow,lx=191,ly=251,xs=124&257,ys=280&221"},
+        "event": "FINISH",
+        "id": "T1",
+        "to": "A3"
+      }]
+    },
+    {
+      "attributes": {"WORK_DISPLAY_INFO": "x=484,y=258,w=60,h=40"},
+      "id": "A2",
+      "implementor": "com.centurylink.mdw.workflow.activity.process.ProcessFinishActivity",
+      "name": "Stop"
+    },
+    {
+      "attributes": {
+        "TASK_TEMPLATE": "testFlow/step1.task",
+        "TASK_TEMPLATE_assetVersion": "[0.1,1)",
+        "WORK_DISPLAY_INFO": "x=261,y=191,w=100,h=60"
+      },
+      "id": "A3",
+      "implementor": "com.centurylink.mdw.workflow.activity.task.AutoFormManualTaskActivity",
+      "name": "Step 1",
+      "transitions": [{
+        "attributes": {"TRANSITION_DISPLAY_INFO": "type=Elbow,lx=423,ly=250,xs=365&480,ys=221&278"},
+        "event": "FINISH",
+        "id": "T2",
+        "to": "A2"
+      }]
+    }
+  ],
+  "attributes": {
+    "ArrowStyle": "ArrowEnd",
+    "NodeStyle": "BoxIcon",
+    "PROCESS_VISIBILITY": "PUBLIC",
+    "WORK_DISPLAY_INFO": "x=50,y=50,w=0,h=0"
+  }
+}
